@@ -1,5 +1,6 @@
 import { useCallback, useState } from "react"
 import { ChildArea } from "./component/ChildArea";
+import { InlineStyle } from "./component/InlineStyle";
 
 export const App = () => {
     console.log("APP");
@@ -15,11 +16,7 @@ export const App = () => {
 
     return (
         <div>
-            <input value={text} onChange={onChangeText} />
-            <br />
-            <br />
-            <button onClick={onClickOpen}>表示</button>
-            <ChildArea open={open} onClickClose={onClickClose} />
+            <InlineStyle />
         </div>
     )
 }
