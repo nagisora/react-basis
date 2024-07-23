@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { SecondaryButton } from "../atoms/button/SecondaryButton";
 import { useContext } from "react";
 import { UserContext } from "../../providers/UserProvider";
+import axios from "axios";
 
 export const Top = () => {
   const navigate = useNavigate();
@@ -16,6 +17,16 @@ export const Top = () => {
     setUserInfo({ isAdmin: false});
     navigate("/users");
   }
+  const onClickUsers = () => {
+    axios.get("https://jsonplaceholder.typicode.com/users").then((res) => {
+      console.log(res.data);
+    }).catch((err) => console.log(err));
+  }
+  const onClickUser1 = () => {
+    axios.get("https://jsonplaceholder.typicode.com/users/1").then((res) => {
+      console.log(res.data);
+    }).catch((err) => console.log(err));
+  }
   
   return (
     <SContainer>
@@ -24,6 +35,8 @@ export const Top = () => {
       <br />
       <br />
       <SecondaryButton onClick={onClickGeneral}>一般</SecondaryButton>
+      <button onClick={onClickUsers}>users</button>
+      <button onClick={onClickUser1}>id=1のuser</button>
     </SContainer>
   );
 };
